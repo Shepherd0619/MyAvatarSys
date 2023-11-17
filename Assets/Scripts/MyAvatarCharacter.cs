@@ -14,10 +14,12 @@ public class MyAvatarCharacter : MonoBehaviour
 	public GameObject Btm => mBtm;
 	public GameObject Shoes => mShoes;
 	public GameObject Top => mTop;
+	public GameObject Face => mFace;
     private GameObject mHair;
     private GameObject mBtm;
     private GameObject mShoes;
     private GameObject mTop;
+    private GameObject mFace;
 
     /// <summary>
     /// 是否组合Mesh
@@ -47,6 +49,7 @@ public class MyAvatarCharacter : MonoBehaviour
         mBtm = null;
         mShoes = null;
         mTop = null;
+		mFace = null;
     }
 
     public void Generate(AvatarRes avatarres, bool combine = false)
@@ -67,6 +70,7 @@ public class MyAvatarCharacter : MonoBehaviour
         ChangeEquipUnCombine((int)EPart.EP_Btm, avatarres);
         ChangeEquipUnCombine((int)EPart.EP_Shoes, avatarres);
         ChangeEquipUnCombine((int)EPart.EP_Top, avatarres);
+		ChangeEquipUnCombine((int)EPart.EP_Face, avatarres);
     }
 
 	public void ChangeEquipUnCombine(int type, AvatarRes avatarres)
@@ -97,6 +101,12 @@ public class MyAvatarCharacter : MonoBehaviour
 			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mTopList[avatarres.mTopIdx].PrimaryKey, (obj) =>
 			{
 				ChangeEquipUnCombine(ref mTop, obj);
+			});
+		}else if (type == (int)EPart.EP_Face)
+		{
+			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mFaceList[avatarres.mFaceIdx].PrimaryKey, (obj) =>
+			{
+				ChangeEquipUnCombine(ref mFace, obj);
 			});
 		}
 	}

@@ -49,7 +49,7 @@ public class MyAvatarUI : MonoBehaviour
 		// Buttons for changing the active character.
 		GUILayout.BeginHorizontal();
 
-		if (GUILayout.Button("男", GUILayout.Width(buttonWidth), GUILayout.Height(typeheight)))
+		if (GUILayout.Button("♂", GUILayout.Width(buttonWidth), GUILayout.Height(typeheight)))
 		{
 			if(mAvatarRes != null)
 				mAvatarRes.ReleaseCurrentClothes();
@@ -66,7 +66,7 @@ public class MyAvatarUI : MonoBehaviour
 
 		GUILayout.Box("Character", GUILayout.Width(typeWidth), GUILayout.Height(typeheight));
 
-		if (GUILayout.Button("女", GUILayout.Width(buttonWidth), GUILayout.Height(typeheight)))
+		if (GUILayout.Button("♀", GUILayout.Width(buttonWidth), GUILayout.Height(typeheight)))
 		{
 			if (mAvatarRes != null)
 				mAvatarRes.ReleaseCurrentClothes();
@@ -84,10 +84,11 @@ public class MyAvatarUI : MonoBehaviour
 		GUILayout.EndHorizontal();
 
 		// Buttons for changing character elements.
-		AddCategory((int)EPart.EP_Hair, "Hair", null);
-		AddCategory((int)EPart.EP_Top, "Body", "item_shirt");
-		AddCategory((int)EPart.EP_Btm, "Btm", "item_pants");
-		AddCategory((int)EPart.EP_Shoes, "Feet", "item_boots");
+		AddCategory((int)EPart.EP_Hair, "Hair");
+		AddCategory((int)EPart.EP_Face, "Face");
+		AddCategory((int)EPart.EP_Top, "Body");
+		AddCategory((int)EPart.EP_Btm, "Btm");
+		AddCategory((int)EPart.EP_Shoes, "Feet");
 
 		GUILayout.EndArea();
 	}
@@ -96,7 +97,7 @@ public class MyAvatarUI : MonoBehaviour
 
 	#region 函数
 
-	private void AddCategory(int parttype, string displayName, string anim)
+	private void AddCategory(int parttype, string displayName)
 	{
 		GUILayout.BeginHorizontal();
 
