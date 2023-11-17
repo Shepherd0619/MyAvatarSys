@@ -1,9 +1,6 @@
 // MyAvatarUI
 // 朱梓瑞 Shepherd0619
 // 用于开发期间测试换装
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 using static AvatarRes;
 
@@ -51,7 +48,7 @@ public class MyAvatarUI : MonoBehaviour
 
 		if (GUILayout.Button("♂", GUILayout.Width(buttonWidth), GUILayout.Height(typeheight)))
 		{
-			if(mAvatarRes != null)
+			if (mAvatarRes != null)
 				mAvatarRes.ReleaseCurrentClothes();
 			mAvatarRes = mAvatarSys.MaleAvatarRes;
 			mMaleCharacter.Generate(mAvatarRes, mCombine);
