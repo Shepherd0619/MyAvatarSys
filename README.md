@@ -1,4 +1,5 @@
 # MyAvatarSys
+English | [中文](https://github.com/Shepherd0619/MyAvatarSys/blob/master/README%20_zh-CN.md)
 
 Author: Shepherd Zhu
 
