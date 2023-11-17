@@ -113,8 +113,16 @@ public class MyAvatarCharacter : MonoBehaviour
         go.Reset(mSkeleton);
         go.name = resgo.name;
 
+		/*
         SkinnedMeshRenderer render = go.GetComponentInChildren<SkinnedMeshRenderer>();
         ShareSkeletonInstanceWith(render, mSkeleton);
+		*/
+
+		SkinnedMeshRenderer[] renders = go.GetComponentsInChildren<SkinnedMeshRenderer>();
+		foreach (SkinnedMeshRenderer render in renders)
+		{
+			ShareSkeletonInstanceWith(render, mSkeleton);
+		}
     }
 
     // 共享骨骼
