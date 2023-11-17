@@ -61,6 +61,8 @@ public class MyAvatarUI : MonoBehaviour
 			Destroy(mFemaleCharacter.Btm);
 			Destroy(mFemaleCharacter.Shoes);
 			Destroy(mFemaleCharacter.Hair);
+			Destroy(mFemaleCharacter.Face);
+			Destroy(mFemaleCharacter.Eye);
 			mMaleCharacter.gameObject.SetActive(true);
 		}
 
@@ -78,6 +80,8 @@ public class MyAvatarUI : MonoBehaviour
 			Destroy(mMaleCharacter.Btm);
 			Destroy(mMaleCharacter.Shoes);
 			Destroy(mMaleCharacter.Hair);
+			Destroy(mFemaleCharacter.Face);
+			Destroy(mFemaleCharacter.Eye);
 			mFemaleCharacter.gameObject.SetActive(true);
 		}
 
@@ -86,6 +90,7 @@ public class MyAvatarUI : MonoBehaviour
 		// Buttons for changing character elements.
 		AddCategory((int)EPart.EP_Hair, "Hair");
 		AddCategory((int)EPart.EP_Face, "Face");
+		AddCategory((int)EPart.EP_Eye, "Eye");
 		AddCategory((int)EPart.EP_Top, "Body");
 		AddCategory((int)EPart.EP_Btm, "Btm");
 		AddCategory((int)EPart.EP_Shoes, "Feet");

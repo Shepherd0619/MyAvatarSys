@@ -9,17 +9,19 @@ using static AvatarRes;
 
 public class MyAvatarCharacter : MonoBehaviour
 {
-    [SerializeField] private GameObject mSkeleton;
     public GameObject Hair => mHair;
 	public GameObject Btm => mBtm;
 	public GameObject Shoes => mShoes;
 	public GameObject Top => mTop;
 	public GameObject Face => mFace;
+	public GameObject Eye => mEye;
+
     private GameObject mHair;
     private GameObject mBtm;
     private GameObject mShoes;
     private GameObject mTop;
     private GameObject mFace;
+    private GameObject mEye;
 
     /// <summary>
     /// 是否组合Mesh
@@ -50,6 +52,7 @@ public class MyAvatarCharacter : MonoBehaviour
         mShoes = null;
         mTop = null;
 		mFace = null;
+		mEye = null;
     }
 
     public void Generate(AvatarRes avatarres, bool combine = false)
@@ -71,7 +74,8 @@ public class MyAvatarCharacter : MonoBehaviour
         ChangeEquipUnCombine((int)EPart.EP_Shoes, avatarres);
         ChangeEquipUnCombine((int)EPart.EP_Top, avatarres);
 		ChangeEquipUnCombine((int)EPart.EP_Face, avatarres);
-    }
+		ChangeEquipUnCombine((int)EPart.EP_Eye, avatarres);
+	}
 
 	public void ChangeEquipUnCombine(int type, AvatarRes avatarres)
 	{
@@ -108,6 +112,12 @@ public class MyAvatarCharacter : MonoBehaviour
 			{
 				ChangeEquipUnCombine(ref mFace, obj);
 			});
+		}else if (type == (int)EPart.EP_Eye)
+		{
+			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mEyeList[avatarres.mEyeIdx].PrimaryKey, (obj) =>
+			{
+				ChangeEquipUnCombine(ref mEye, obj);
+			});
 		}
 	}
 
@@ -120,7 +130,7 @@ public class MyAvatarCharacter : MonoBehaviour
         }
 
         go = GameObject.Instantiate(resgo);
-        go.Reset(mSkeleton);
+        go.Reset(gameObject);
         go.name = resgo.name;
 
 		/*
@@ -131,7 +141,7 @@ public class MyAvatarCharacter : MonoBehaviour
 		SkinnedMeshRenderer[] renders = go.GetComponentsInChildren<SkinnedMeshRenderer>();
 		foreach (SkinnedMeshRenderer render in renders)
 		{
-			ShareSkeletonInstanceWith(render, mSkeleton);
+			ShareSkeletonInstanceWith(render, gameObject);
 		}
     }
 

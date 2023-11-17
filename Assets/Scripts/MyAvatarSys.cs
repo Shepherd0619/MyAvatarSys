@@ -19,12 +19,14 @@ public class AvatarRes
     public List<IResourceLocation> mBtmList = new List<IResourceLocation>();
     public List<IResourceLocation> mShoesList = new List<IResourceLocation>();
 	public List<IResourceLocation> mFaceList = new List<IResourceLocation>();
+	public List<IResourceLocation> mEyeList = new List<IResourceLocation>();
 
     public int mHairIdx = 0;
     public int mBtmIdx = 0;
     public int mShoesIdx = 0;
     public int mTopIdx = 0;
     public int mFaceIdx = 0;
+    public int mEyeIdx = 0;
 
     public void Reset()
     {
@@ -33,6 +35,7 @@ public class AvatarRes
         mShoesIdx = 0;
         mTopIdx = 0;
 		mFaceIdx = 0;
+		mEyeIdx = 0;
     }
 
 	/// <summary>
@@ -45,6 +48,7 @@ public class AvatarRes
 	    MyAvatarAssetLoader.ReleaseAsset(mShoesList[mShoesIdx].PrimaryKey);
 	    MyAvatarAssetLoader.ReleaseAsset(mTopList[mTopIdx].PrimaryKey);
 	    MyAvatarAssetLoader.ReleaseAsset(mFaceList[mFaceIdx].PrimaryKey);
+	    MyAvatarAssetLoader.ReleaseAsset(mEyeList[mEyeIdx].PrimaryKey);
 	}
 
     public void AddIndex(int type)
@@ -82,6 +86,12 @@ public class AvatarRes
 	        mFaceIdx++;
 	        if (mFaceIdx >= mFaceList.Count)
 		        mFaceIdx = 0;
+		}else if (type == (int)EPart.EP_Eye)
+        {
+	        MyAvatarAssetLoader.ReleaseAsset(mEyeList[mEyeIdx].PrimaryKey);
+	        mEyeIdx++;
+	        if (mEyeIdx >= mEyeList.Count)
+		        mEyeIdx = 0;
 		}
     }
 
@@ -117,6 +127,12 @@ public class AvatarRes
 	        if (mFaceIdx < 0)
 		        mFaceIdx = mFaceList.Count - 1;
         }
+        else if (type == (int)EPart.EP_Eye)
+        {
+	        mEyeIdx--;
+	        if (mEyeIdx < 0)
+		        mEyeIdx = mEyeList.Count - 1;
+		}
     }
 
     public enum EPart
@@ -125,7 +141,8 @@ public class AvatarRes
         EP_Top,
         EP_Btm,
         EP_Shoes,
-		EP_Face
+		EP_Face,
+		EP_Eye
     }
 }
 
@@ -214,6 +231,12 @@ public class MyAvatarSys : MonoBehaviour
 						m_MaleAvatarRes.mTopList.Add(location);
 						break;
 					}
+
+					case "eyes":
+					{
+						m_MaleAvatarRes.mEyeList.Add(location);
+						break;
+					}
 				}
 			}
         }
@@ -285,6 +308,12 @@ public class MyAvatarSys : MonoBehaviour
 					case "top":
 					{
 						m_FemaleAvatarRes.mTopList.Add(location);
+						break;
+					}
+
+					case "eyes":
+					{
+						m_FemaleAvatarRes.mEyeList.Add(location);
 						break;
 					}
 				}
