@@ -76,47 +76,44 @@ public class MyAvatarCharacter : MonoBehaviour
 
 	public void ChangeEquipUnCombine(int type, AvatarRes avatarres)
 	{
-		if (type == (int)EPart.EP_Hair)
+		switch ((EPart)type)
 		{
-			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mHairList[avatarres.mHairIdx].PrimaryKey, (obj) =>
-			{
-				ChangeEquipUnCombine(ref mHair, obj);
-			});
-		}
-		else if (type == (int)EPart.EP_Btm)
-		{
-			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mBtmList[avatarres.mBtmIdx].PrimaryKey, (obj) =>
-			{
-				ChangeEquipUnCombine(ref mBtm, obj);
-			});
-		}
-		else if (type == (int)EPart.EP_Shoes)
-		{
-			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mShoesList[avatarres.mShoesIdx].PrimaryKey, (obj) =>
-			{
-				ChangeEquipUnCombine(ref mShoes, obj);
-			});
-		}
-		else if (type == (int)EPart.EP_Top)
-		{
-			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mTopList[avatarres.mTopIdx].PrimaryKey, (obj) =>
-			{
-				ChangeEquipUnCombine(ref mTop, obj);
-			});
-		}
-		else if (type == (int)EPart.EP_Face)
-		{
-			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mFaceList[avatarres.mFaceIdx].PrimaryKey, (obj) =>
-			{
-				ChangeEquipUnCombine(ref mFace, obj);
-			});
-		}
-		else if (type == (int)EPart.EP_Eye)
-		{
-			MyAvatarAssetLoader.LoadAssetAsync(avatarres.mEyeList[avatarres.mEyeIdx].PrimaryKey, (obj) =>
-			{
-				ChangeEquipUnCombine(ref mEye, obj);
-			});
+			case EPart.EP_Hair:
+				MyAvatarAssetLoader.LoadAssetAsync(avatarres.mHairList[avatarres.mHairIdx].PrimaryKey, (obj) =>
+				{
+					ChangeEquipUnCombine(ref mHair, obj);
+				});
+				break;
+			case EPart.EP_Btm:
+				MyAvatarAssetLoader.LoadAssetAsync(avatarres.mBtmList[avatarres.mBtmIdx].PrimaryKey, (obj) =>
+				{
+					ChangeEquipUnCombine(ref mBtm, obj);
+				});
+				break;
+			case EPart.EP_Shoes:
+				MyAvatarAssetLoader.LoadAssetAsync(avatarres.mShoesList[avatarres.mShoesIdx].PrimaryKey, (obj) =>
+				{
+					ChangeEquipUnCombine(ref mShoes, obj);
+				});
+				break;
+			case EPart.EP_Top:
+				MyAvatarAssetLoader.LoadAssetAsync(avatarres.mTopList[avatarres.mTopIdx].PrimaryKey, (obj) =>
+				{
+					ChangeEquipUnCombine(ref mTop, obj);
+				});
+				break;
+			case EPart.EP_Face:
+				MyAvatarAssetLoader.LoadAssetAsync(avatarres.mFaceList[avatarres.mFaceIdx].PrimaryKey, (obj) =>
+				{
+					ChangeEquipUnCombine(ref mFace, obj);
+				});
+				break;
+			case EPart.EP_Eye:
+				MyAvatarAssetLoader.LoadAssetAsync(avatarres.mEyeList[avatarres.mEyeIdx].PrimaryKey, (obj) =>
+				{
+					ChangeEquipUnCombine(ref mEye, obj);
+				});
+				break;
 		}
 	}
 

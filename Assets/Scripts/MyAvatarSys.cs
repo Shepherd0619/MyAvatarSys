@@ -52,89 +52,60 @@ public class AvatarRes
 
 	public void AddIndex(int type)
 	{
-		if (type == (int)EPart.EP_Hair)
+		switch (type)
 		{
-			MyAvatarAssetLoader.ReleaseAsset(mHairList[mHairIdx].PrimaryKey);
-			mHairIdx++;
-			if (mHairIdx >= mHairList.Count)
-				mHairIdx = 0;
-		}
-		else if (type == (int)EPart.EP_Btm)
-		{
-			MyAvatarAssetLoader.ReleaseAsset(mBtmList[mBtmIdx].PrimaryKey);
-			mBtmIdx++;
-			if (mBtmIdx >= mBtmList.Count)
-				mBtmIdx = 0;
-		}
-		else if (type == (int)EPart.EP_Shoes)
-		{
-			MyAvatarAssetLoader.ReleaseAsset(mShoesList[mShoesIdx].PrimaryKey);
-			mShoesIdx++;
-			if (mShoesIdx >= mShoesList.Count)
-				mShoesIdx = 0;
-		}
-		else if (type == (int)EPart.EP_Top)
-		{
-			MyAvatarAssetLoader.ReleaseAsset(mTopList[mTopIdx].PrimaryKey);
-			mTopIdx++;
-			if (mTopIdx >= mTopList.Count)
-				mTopIdx = 0;
-		}
-		else if (type == (int)EPart.EP_Face)
-		{
-			MyAvatarAssetLoader.ReleaseAsset(mFaceList[mFaceIdx].PrimaryKey);
-			mFaceIdx++;
-			if (mFaceIdx >= mFaceList.Count)
-				mFaceIdx = 0;
-		}
-		else if (type == (int)EPart.EP_Eye)
-		{
-			MyAvatarAssetLoader.ReleaseAsset(mEyeList[mEyeIdx].PrimaryKey);
-			mEyeIdx++;
-			if (mEyeIdx >= mEyeList.Count)
-				mEyeIdx = 0;
+			case (int)EPart.EP_Hair:
+				MyAvatarAssetLoader.ReleaseAsset(mHairList[mHairIdx].PrimaryKey);
+				mHairIdx = (mHairIdx + 1) % mHairList.Count;
+				break;
+			case (int)EPart.EP_Btm:
+				MyAvatarAssetLoader.ReleaseAsset(mBtmList[mBtmIdx].PrimaryKey);
+				mBtmIdx = (mBtmIdx + 1) % mBtmList.Count;
+				break;
+			case (int)EPart.EP_Shoes:
+				MyAvatarAssetLoader.ReleaseAsset(mShoesList[mShoesIdx].PrimaryKey);
+				mShoesIdx = (mShoesIdx + 1) % mShoesList.Count;
+				break;
+			case (int)EPart.EP_Top:
+				MyAvatarAssetLoader.ReleaseAsset(mTopList[mTopIdx].PrimaryKey);
+				mTopIdx = (mTopIdx + 1) % mTopList.Count;
+				break;
+			case (int)EPart.EP_Face:
+				MyAvatarAssetLoader.ReleaseAsset(mFaceList[mFaceIdx].PrimaryKey);
+				mFaceIdx = (mFaceIdx + 1) % mFaceList.Count;
+				break;
+			case (int)EPart.EP_Eye:
+				MyAvatarAssetLoader.ReleaseAsset(mEyeList[mEyeIdx].PrimaryKey);
+				mEyeIdx = (mEyeIdx + 1) % mEyeList.Count;
+				break;
 		}
 	}
 
 	public void ReduceIndex(int type)
 	{
-		if (type == (int)EPart.EP_Hair)
+		switch (type)
 		{
-			mHairIdx--;
-			if (mHairIdx < 0)
-				mHairIdx = mHairList.Count - 1;
-		}
-		else if (type == (int)EPart.EP_Btm)
-		{
-			mBtmIdx--;
-			if (mBtmIdx < 0)
-				mBtmIdx = mBtmList.Count - 1;
-		}
-		else if (type == (int)EPart.EP_Shoes)
-		{
-			mShoesIdx--;
-			if (mShoesIdx < 0)
-				mShoesIdx = mShoesList.Count - 1;
-		}
-		else if (type == (int)EPart.EP_Top)
-		{
-			mTopIdx--;
-			if (mTopIdx < 0)
-				mTopIdx = mTopList.Count - 1;
-		}
-		else if (type == (int)EPart.EP_Face)
-		{
-			mFaceIdx--;
-			if (mFaceIdx < 0)
-				mFaceIdx = mFaceList.Count - 1;
-		}
-		else if (type == (int)EPart.EP_Eye)
-		{
-			mEyeIdx--;
-			if (mEyeIdx < 0)
-				mEyeIdx = mEyeList.Count - 1;
+			case (int)EPart.EP_Hair:
+				mHairIdx = (mHairIdx - 1 + mHairList.Count) % mHairList.Count;
+				break;
+			case (int)EPart.EP_Btm:
+				mBtmIdx = (mBtmIdx - 1 + mBtmList.Count) % mBtmList.Count;
+				break;
+			case (int)EPart.EP_Shoes:
+				mShoesIdx = (mShoesIdx - 1 + mShoesList.Count) % mShoesList.Count;
+				break;
+			case (int)EPart.EP_Top:
+				mTopIdx = (mTopIdx - 1 + mTopList.Count) % mTopList.Count;
+				break;
+			case (int)EPart.EP_Face:
+				mFaceIdx = (mFaceIdx - 1 + mFaceList.Count) % mFaceList.Count;
+				break;
+			case (int)EPart.EP_Eye:
+				mEyeIdx = (mEyeIdx - 1 + mEyeList.Count) % mEyeList.Count;
+				break;
 		}
 	}
+
 
 	public enum EPart
 	{
